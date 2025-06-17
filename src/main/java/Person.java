@@ -9,9 +9,9 @@ public class Person {
     private int age;
     private Person mother;
     private Person father;
-    private List<Person> siblings;
-    private List<Person> children;
-    private List<Pet> pets;
+    private List<Person> siblings = new ArrayList<>();;
+    private List<Person> children = new ArrayList<>();
+    private List<Pet> pets = new ArrayList<>();;
 
     public Person(String name, String lastName, int age, String sex) {
         this.name = name;
@@ -125,7 +125,7 @@ public class Person {
         siblings.add(sibling);
     }
 
-    public List<Person> getGrandChildren(Person person) {
+    public static List<Person> getGrandChildren(Person person) {
         List<Person> grandChildren = new ArrayList<>();
 
         for (Person child : person.getChildren()) {
