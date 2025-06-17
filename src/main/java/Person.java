@@ -134,4 +134,15 @@ public class Person {
 
         return grandChildren;
     }
+
+    public static List<Pet> getPetsOfGrandChildren(Person person) {
+        List<Person> grandChildren = getGrandChildren(person);
+        List <Pet> allPets = new ArrayList<>();
+
+        for (Person grandChild : grandChildren) {
+            allPets.addAll(grandChild.getPets());
+        }
+
+        return allPets;
+    }
 }
