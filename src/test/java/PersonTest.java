@@ -75,4 +75,16 @@ class PersonTest {
 
         assertTrue(allPets.contains(dog) && allPets.contains(cat));
     }
+
+    @Test
+    public void getNiecesShouldShowAllNieces() {
+        child1.addChild(grandChild1);
+        child1.addChild(grandChild2);
+        child2.addChild(grandChild3);
+        child2.addSibling(child1);
+
+        List<Person> allNieces = Person.getNieces(child2);
+
+        assertTrue(allNieces.contains(grandChild1));
+    }
 }

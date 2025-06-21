@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Person {
     private String name;
@@ -144,5 +146,18 @@ public class Person {
         }
 
         return allPets;
+    }
+    public static List<Person> getNieces(Person person) {
+        List<Person> siblings = person.getSiblings();
+        List<Person> siblingsChildren = new ArrayList<>();
+
+        for (Person sibling : siblings) {
+            siblingsChildren.addAll(sibling.getChildren());
+        }
+
+        return siblingsChildren
+                .stream()
+                .filter(c -> Objects.equals(c.getSex(), "female"))
+                .toList();
     }
 }
