@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Person {
     private String name;
@@ -11,9 +10,10 @@ public class Person {
     private int age;
     private Person mother;
     private Person father;
-    private List<Person> siblings = new ArrayList<>();;
+    private List<Person> siblings = new ArrayList<>();
     private List<Person> children = new ArrayList<>();
-    private List<Pet> pets = new ArrayList<>();;
+    private List<Pet> pets = new ArrayList<>();
+    private Person partner;
 
     public Person(String name, String lastName, int age, String sex) {
         this.name = name;
@@ -110,6 +110,14 @@ public class Person {
         this.pets = pets;
     }
 
+    public Person getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Person partner) {
+        this.partner = partner;
+    }
+
     public void addParents(Person mother, Person father) {
         setMother(mother);
         setFather(father);
@@ -139,7 +147,7 @@ public class Person {
 
     public static List<Pet> getPetsOfGrandChildren(Person person) {
         List<Person> grandChildren = getGrandChildren(person);
-        List <Pet> allPets = new ArrayList<>();
+        List<Pet> allPets = new ArrayList<>();
 
         for (Person grandChild : grandChildren) {
             allPets.addAll(grandChild.getPets());
@@ -147,6 +155,7 @@ public class Person {
 
         return allPets;
     }
+
     public static List<Person> getNieces(Person person) {
         List<Person> siblings = person.getSiblings();
         List<Person> siblingsChildren = new ArrayList<>();
